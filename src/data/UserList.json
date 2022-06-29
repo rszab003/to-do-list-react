@@ -1,0 +1,17 @@
+[
+   {"id":1,"task":"eat tacos","Category":"work","Date":"2020-11-01"},
+{"id":2,"task":"make lasagna","Category":"personal","Date":"2021-04-03"},
+{"id":3,"task":"eat tacos","Category":"home","Date":"2021-05-23"},
+{"id":4,"task":"buy wine","Category":"home","Date":"2021-04-25"},
+{"id":5,"task":"finish work project","Category":"work","Date":"2021-09-28"},
+{"id":6,"task":"tend the garden","Category":"personal","Date":"2021-07-10"},
+{"id":7,"task":"finish work project","Category":"work","Date":"2021-07-10"},
+{"id":8,"task":"work on side projects","Category":"personal","Date":"2021-10-06"},
+
+
+{"id":9,"task":"finish work project","Category":"home","Date":"2021-04-10"},
+
+{"id":10,"task":"finish work project","Category":"work","Date":"2021-08-17"},
+{"id":11,"task":"go shopping","Category":"home","Date":"2021-02-02"},
+{"id":12,"task":"take out garbage","Category":"personal","Date":"2021-01-04"}
+]
