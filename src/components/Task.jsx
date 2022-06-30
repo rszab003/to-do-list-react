@@ -11,7 +11,11 @@ class Task extends React.Component {
                     <td>{this.props.category}</td>
                     <td>{this.props.date}</td>
                     <td>
-                        <Link to="/edittask">
+                        <Link to={
+                            {
+                            pathname: "/edittask",
+                            }}
+                            state={{taskID: this.props.id}}>
                         <button >EDIT</button>
                         </Link>
                         <button>DELETE</button>

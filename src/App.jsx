@@ -3,6 +3,7 @@ import Home from "./Home";
 import NewTask from "./NewTask";
 import EditTask from "./EditTask"
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 import UserList from "./data/UserList.json";
 
 class App extends React.Component {
@@ -35,7 +36,7 @@ class App extends React.Component {
         <Routes>
           <Route path="/" element={<Home UserList={this.state.currList} />} />
           <Route path="/newtask" element={<NewTask updateTasks={this.updateTasks} UserList={this.state.currList} />} />
-          <Route path="/edittask" element={ <EditTask /> }/>
+          <Route path="/edittask" element={ <EditTask  UserList={this.state.currList}/> }/>
         </Routes>
       </BrowserRouter>
     );
