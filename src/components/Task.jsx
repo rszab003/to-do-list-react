@@ -1,28 +1,22 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 
-class Task extends React.Component {
 
-    render() {
-        return(
-                <tr id={this.props.id}>
-                    <td>{this.props.task}</td>
-                    <td>{this.props.category}</td>
-                    <td>{this.props.date}</td>
-                    <td>
-                        <Link to={
-                            {
-                            pathname: "/edittask",
-                            }}
-                            state={{taskID: this.props.id}}>
-                        <button >EDIT</button>
-                        </Link>
-                        <button>DELETE</button>
-                    </td>
-                </tr>
-        );
-    }
+function Task(props) {
+    const navigate = useNavigate();
+    const { id } = useParams();
+    return(
+            <tr id={props.id}>
+                <td>{props.task}</td>
+                <td>{props.category}</td>
+                <td>{props.date}</td>
+                <td>
+                    <button onClick={()=>navigate(`/edittask:${props.id}`)}>EDIT</button>
+                    <button onClick={()=>props.delTask(props.id)}>DELETE</button>
+                </td>
+            </tr>
+    );
+
 }
-
 export default Task;

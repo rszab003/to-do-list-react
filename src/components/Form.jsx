@@ -11,34 +11,11 @@ class Form extends React.Component {
             date: this.props.date,
             currTasks: this.props.currTasks
         }
-        this.parseInput = this.parseInput.bind(this);
         this.changeFormState = this.changeFormState.bind(this);
     }
 
-    parseInput(event) {
-        event.preventDefault();
-        console.log("ARE WE STILL HERE?")
-        const newIdx = this.state.currTasks.length + 1;
-        const newTask = {
-            id: newIdx,
-            task: this.state.task,
-            Category: this.state.cat,
-            Date: this.state.date
-        }
-        this.state.currTasks.push(newTask);
-        this.setState({
-            currTasks: this.state.currTasks
-        })
-        //update in parent App component
-        console.log(")))))))")
-        console.log(this.state.currTasks)
-        this.props.updateState(this.state.currTasks);
-        this.setState({
-            redirect: true
-        });
-    }
-
     changeFormState(event) {
+        // console.log(this.props.task)
         if (event.target.id == "task") {
             this.setState({
                 task: event.target.value
@@ -58,11 +35,10 @@ class Form extends React.Component {
             console.log("new state" + this.state.date)
         }
     }
-
     render() {
         return (
             <div>
-                <form acceptCharset="utf-8" onSubmit={this.parseInput}>
+                <form acceptCharset="utf-8" onSubmit={this.props.parseInput}>
                     <div>
                         <label>
                             Task Name
@@ -70,7 +46,7 @@ class Form extends React.Component {
                                 <input type="text"
                                     
                                     id="task"
-                                    default={this.props.task}
+                                    defaultValue={this.props.task}
                                     onChange={this.changeFormState}
                                 />
                             </div>
@@ -83,6 +59,7 @@ class Form extends React.Component {
                                 <input type="text"
                                 
                                 id="category"
+                                defaultValue={this.props.cat}
                                 onChange={this.changeFormState}
                                  />
                             </div>
@@ -95,7 +72,7 @@ class Form extends React.Component {
                                 <input type="date"
                                     
                                     id="date"
-                                    value={this.state.date}
+                                    defaultValue={this.state.date}
                                     onChange={this.changeFormState}
                                 />
                             </div>

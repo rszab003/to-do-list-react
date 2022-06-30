@@ -11,17 +11,39 @@ class Home extends React.Component {
         this.state = {
             currTasks: props.UserList
         }
+
+        this.populateTasks = this.populateTasks.bind(this);
+        this.deleteTask = this.deleteTask.bind(this)
     }
 
-    componentDidMount() {
-        console.log("BACK TO HOMEPAGE!!")
-        console.log(this.state.currTasks);
-      }
+    populateTasks() {
+        const delTask = this.deleteTask;
+        return (
+        this.props.UserList.map(function(task) {
+            return (
+                <Task key={task.id} id={task.id} task={task.task} category={task.Category} date={task.Date} delTask={delTask}
+                 />
+            );
+        })
+        );
+    }
+    
+    deleteTask = (taskID) => {
+        let tasks = this.state.currTasks;
+        console.log(tasks);
+        for (let i = 0; i < tasks.length; i++) {
+            if (taskID == tasks[i]["id"]) {
+                console.log(tasks[i]);
+                tasks.splice(i, 1);
+            }
+        }
 
-    // static getDerivedStateFromProps(props, state) {
-    //     return {currTasks: props.UserList}
-    // }
-
+        console.log(tasks)
+        this.setState({
+            currTasks: tasks
+        })
+    }
+    
     render() {
         return (
             <div>
@@ -38,11 +60,7 @@ class Home extends React.Component {
                     </thead>
                     <tbody>
                     {
-                    this.props.UserList.map(function(task) {
-                        return (
-                            <Task key={task.id} id={task.id} task={task.task} category={task.Category} date={task.Date} />
-                        );
-                    })
+                        this.populateTasks()
                     }
                     </tbody>
                     

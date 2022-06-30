@@ -1,5 +1,5 @@
 import React from "react";
-import {Link, Navigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import Form from "./components/Form";
 
 
@@ -16,6 +16,27 @@ class NewTask extends React.Component {
             currTasks: this.props.UserList 
         };
         this.updateState = this.updateState.bind(this);
+        this.parseInput = this.parseInput.bind(this);
+    }
+
+    parseInput(event) {
+        event.preventDefault();
+        console.log("ARE WE STILL HERE?")
+        const newIdx = this.state.currTasks.length + 1;
+        const newTask = {
+            id: newIdx,
+            task: event.target[0].value,
+            Category: event.target[1].value,
+            Date: event.target[2].value
+        }
+        this.state.currTasks.push(newTask);
+        this.setState({
+            currTasks: this.state.currTasks
+        })
+        //update in parent App component
+        console.log(")))))))")
+        console.log(this.state.currTasks)
+        this.updateState(this.state.currTasks);
     }
 
     updateState(newList) {
@@ -35,6 +56,7 @@ class NewTask extends React.Component {
                     date={this.state.taskDate}
                     currTasks={this.state.currTasks}
                     updateState={this.updateState}
+                    parseInput={this.parseInput}
                     >
                     </Form>
                  
