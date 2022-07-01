@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import Task from "./components/Task";
 import "./styles/Home.css"
 
-
-
 class Home extends React.Component {
 
     constructor(props) {
@@ -62,9 +60,9 @@ class Home extends React.Component {
                 <table id="table">
                     <thead id="table-head" bgcolor="#3aa554">
                     <tr>
-                        <th id="h-task">Task</th>
-                        <th id="h-cat">Category</th>
-                        <th id="h-date">Date</th>
+                        <th id="h-task">Leírás</th>
+                        <th id="h-cat">Kategória</th>
+                        <th id="h-date">Dátum</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -77,7 +75,7 @@ class Home extends React.Component {
                 </table>
 
                <Link to={"./newtask"}>
-                    <button id="new-task-btn">NEW TASK</button>
+                    <button id="new-task-btn">Új hozzáadása</button>
                </Link>
             </div>
         );

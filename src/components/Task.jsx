@@ -7,7 +7,7 @@ function Task(props) {
     const navigate = useNavigate();
     const { id } = useParams();
     return(
-            <tr id={props.id}>
+            <tr className="content" id={props.id}>
                 <td>{props.task}</td>
                 <td>{props.category}</td>
                 <td>{props.date}</td>

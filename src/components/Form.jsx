@@ -41,20 +41,20 @@ class Form extends React.Component {
                 <form acceptCharset="utf-8" onSubmit={this.props.parseInput}>
                     <div>
                         <label>
-                            Task Name
+                            Leírás
                             <div>
-                                <input type="text"
-                                    
-                                    id="task"
-                                    defaultValue={this.props.task}
-                                    onChange={this.changeFormState}
-                                />
+                        <input type="text"
+                            
+                            id="task"
+                            defaultValue={this.props.task}
+                            onChange={this.changeFormState}
+                        />
                             </div>
                         </label>
                     </div>
                     <div>
                         <label>
-                            Category
+                            Kategória
                             <div>
                                 <input type="text"
                                 
@@ -64,26 +64,30 @@ class Form extends React.Component {
                                  />
                             </div>
                         </label>
+                        {/*BAD INPUT Label code */}
+                        {this.props.showBadInput && 
+                        <label type="text">Kategória max. 50 karakter lehet!</label>
+                        }
                     </div>
                     <div>
                         <label>
-                            Date
+                            Dátum
                             <div>
-                                <input type="date"
-                                    
-                                    id="date"
-                                    defaultValue={this.state.date}
-                                    onChange={this.changeFormState}
+                    <input type="date"
+                        
+                        id="date"
+                        defaultValue={this.state.date}
+                        onChange={this.changeFormState}
                                 />
                             </div>
                         </label>
                     </div>
                     <button type="submit">
-                        SAVE
+                        Mentés
                     </button>
                     <Link to="/">
                     <button>
-                        Cancel Task
+                        Vissza
                     </button>
                 </Link>
                 </form>

@@ -10,6 +10,7 @@ class NewTask extends React.Component {
         // const navigator = useNavigate()
         this.state = {
             redirect: false,
+            badUsage: false,
             task: "",
             cat: "",
             date: "",
@@ -21,7 +22,7 @@ class NewTask extends React.Component {
 
     parseInput(event) {
         event.preventDefault();
-        console.log("ARE WE STILL HERE?")
+        // console.log("ARE WE STILL HERE?")
         const newIdx = this.state.currTasks.length + 1;
         const newTask = {
             id: newIdx,
@@ -29,6 +30,17 @@ class NewTask extends React.Component {
             Category: event.target[1].value,
             Date: event.target[2].value
         }
+
+        /*check if category exceeds 50 chars */
+
+        if (newTask.Category.length > 50) {
+            // console.log("WE HAVE exceeded 50 chars")
+            this.setState({
+                badUsage: true
+            });
+            return;
+        }
+
         this.state.currTasks.push(newTask);
         this.setState({
             currTasks: this.state.currTasks
@@ -50,13 +62,14 @@ class NewTask extends React.Component {
     render() {
         return (
             <div>
-                <h2>New Task</h2>
+                <h2>Új hozzáadása</h2>
                 <Form task={this.state.taskContent}
                     cat={this.state.taskCategory}
                     date={this.state.taskDate}
                     currTasks={this.state.currTasks}
                     updateState={this.updateState}
                     parseInput={this.parseInput}
+                    showBadInput={this.state.badUsage}
                     >
                     </Form>
                  
