@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Task from "./components/Task"
+import Task from "./components/Task";
+import "./styles/Home.css"
 
 
 
@@ -14,6 +15,15 @@ class Home extends React.Component {
 
         this.populateTasks = this.populateTasks.bind(this);
         this.deleteTask = this.deleteTask.bind(this)
+        console.log("OR NOW???")
+    }
+
+    componentDidMount() {
+        console.log("LOAD THE TASKS NOW!!!")
+    }
+
+    componentWillUnmount() {
+        console.log("SAVE THE TASKS NOW!!!");
     }
 
     populateTasks() {
@@ -47,14 +57,14 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>TO DO</h1>
+                <h1 id="header-home">TO DO</h1>
 
-                <table>
-                    <thead>
+                <table id="table">
+                    <thead id="table-head" bgcolor="#3aa554">
                     <tr>
-                        <th>Task</th>
-                        <th>Category</th>
-                        <th>Date</th>
+                        <th id="h-task">Task</th>
+                        <th id="h-cat">Category</th>
+                        <th id="h-date">Date</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -67,7 +77,7 @@ class Home extends React.Component {
                 </table>
 
                <Link to={"./newtask"}>
-                    <button>NEW TASK</button>
+                    <button id="new-task-btn">NEW TASK</button>
                </Link>
             </div>
         );

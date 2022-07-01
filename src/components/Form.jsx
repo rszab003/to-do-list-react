@@ -20,19 +20,19 @@ class Form extends React.Component {
             this.setState({
                 task: event.target.value
             });
-            console.log("new state" + this.state.task)
+            // console.log("new state" + this.state.task)
         }
         else if (event.target.id == "category") {
             this.setState({
                 cat: event.target.value
             });
-            console.log("new state" + this.state.cat)
+            // console.log("new state" + this.state.cat)
         }
         else { //handles date selection
             this.setState({
                 date: event.target.value
             });
-            console.log("new state" + this.state.date)
+            // console.log("new state" + this.state.date)
         }
     }
     render() {

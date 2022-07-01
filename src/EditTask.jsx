@@ -10,8 +10,8 @@ function EditTask(props) {
     let [redirect, setRedirect] = useState(false);
     let tasks = props.UserList;
     let taskToEdit = tasks.find(task => task.id == id.substring(1))
-    console.log("TASK TO EDIT")
-    console.log(taskToEdit);
+    // console.log("TASK TO EDIT")
+    // console.log(taskToEdit);
 
     function parseInput(event) {
         event.preventDefault();
@@ -21,8 +21,12 @@ function EditTask(props) {
         // console.log(taskToEdit["Category"])
         // console.log(taskToEdit["Date"])
         taskToEdit["Date"] = event.target[2].value;
+        /*index starts at 0, id starts at 1 */
+
+        const idx = Number(id.charAt(1)) - 1;
+        // props.UserList.splice(idx, 1);
         // console.log(taskToEdit["Date"])
-        props.UserList[Number(id.charAt(1)) - 1] = taskToEdit;
+        props.UserList[idx] = taskToEdit;
         setRedirect(true);
     }
     

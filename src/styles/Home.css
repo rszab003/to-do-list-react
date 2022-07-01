@@ -1,0 +1,28 @@
+#header-home {
+    margin-left: 5%;
+}
+
+#table {
+    width: 90%;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: gray;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#table-head {
+    text-align: left;
+    color: rgb(238, 238, 238);
+}
+
+#new-task-btn {
+    width: 10rem;
+    height: 2rem;
+    margin-left: 5%;
+    background-color: rgb(50, 88, 225);
+    color: rgb(238, 238, 238);
+    border-radius: 8px;
+
+}
