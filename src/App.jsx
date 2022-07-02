@@ -41,7 +41,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home UserList={this.state.currList} />} />
+          <Route path="/" element={<Home updateTasks={this.updateTasks} UserList={this.state.currList} />} />
           <Route path="/newtask" element={<NewTask updateTasks={this.updateTasks} UserList={this.state.currList} />} />
           <Route path="/edittask:id" element={ <EditTask updateTasks={this.updateTasks} UserList={this.state.currList}/> }/>
         </Routes>

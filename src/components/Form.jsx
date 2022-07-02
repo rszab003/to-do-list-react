@@ -39,58 +39,54 @@ class Form extends React.Component {
         return (
             <div>
                 <form acceptCharset="utf-8" onSubmit={this.props.parseInput}>
+                    
+                    <label>Leírás</label>
                     <div>
-                        <label>
-                            Leírás
-                            <div>
-                        <input type="text"
-                            
-                            id="task"
-                            defaultValue={this.props.task}
-                            onChange={this.changeFormState}
-                        />
-                            </div>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            Kategória
-                            <div>
-                                <input type="text"
-                                
-                                id="category"
-                                defaultValue={this.props.cat}
-                                onChange={this.changeFormState}
-                                 />
-                            </div>
-                        </label>
-                        {/*BAD INPUT Label code */}
-                        {this.props.showBadInput && 
-                        <label type="text">Kategória max. 50 karakter lehet!</label>
-                        }
-                    </div>
-                    <div>
-                        <label>
-                            Dátum
-                            <div>
-                    <input type="date"
+                    <input type="text"
                         
-                        id="date"
-                        defaultValue={this.state.date}
+                        id="task"
+                        defaultValue={this.props.task}
                         onChange={this.changeFormState}
-                                />
-                            </div>
-                        </label>
-                    </div>
-                    <button type="submit">
-                        Mentés
-                    </button>
-                    <Link to="/">
-                    <button>
-                        Vissza
-                    </button>
-                </Link>
-                </form>
+                    />
+            </div>
+            
+            
+                <label>
+                    Kategória
+                </label>
+                <div>
+                <input
+                type="text"
+                id="category"
+                defaultValue={this.props.cat}
+                onChange={this.changeFormState}
+                    />
+                </div>
+
+
+                {/*BAD INPUT Label code */}
+                {this.props.showBadInput && 
+                <label type="text">Kategória max. 50 karakter lehet!</label>
+                }
+            
+            
+                <label>Dátum</label>
+                <div>
+                <input 
+                type="date"
+                id="date"
+                defaultValue={this.state.date}
+                onChange={this.changeFormState}/>
+                </div>
+                
+        
+        <div id="buttons">
+            <button id="save-btn" type="submit">Mentés</button>
+            <Link to="/">
+            <button id="back-btn">Vissza</button> 
+            </Link>
+        </div>
+        </form>
             </div>
         );
     }

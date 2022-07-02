@@ -11,9 +11,16 @@ function EditTask(props) {
     let [badInput, setBadInput] = useState(false);
     let tasks = props.UserList;
     let taskToEdit = tasks.find(task => task.id == id.substring(1))
+    if (taskToEdit == undefined) {
+        console.log("PROBLEM!!!");
+        console.log(props.UserList);
+    }
     // console.log("TASK TO EDIT")
     // console.log(taskToEdit);
-
+    function componentWillUnmount() {
+        console.log("save to file now!");
+        console.log(props.UserList);
+    }
     function parseInput(event) {
         event.preventDefault();
         taskToEdit["task"] = event.target[0].value;

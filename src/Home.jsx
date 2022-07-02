@@ -7,49 +7,65 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            currTasks: props.UserList
+        if (props.UserList.length == 0) {
+            console.log("DO WE HAVE SAVED TASKS?");
+            var savedTasks = JSON.parse(localStorage.getItem("tasks"));
+            if (savedTasks != null) {
+                this.state = {
+                    currTasks: savedTasks
+                };
+            }
+            else {
+                this.state = {
+                    currTasks: props.UserList
+                }
+            }
+            // console.log(this.state.currTasks);
         }
-
+        else {
+            this.state = {
+                currTasks: props.UserList
+            };
+            // console.log("*********")
+            // console.log(this.state.currTasks);
+        }
         this.populateTasks = this.populateTasks.bind(this);
         this.deleteTask = this.deleteTask.bind(this)
-        console.log("OR NOW???")
+        this.props.updateTasks(this.state.currTasks);
     }
 
     componentDidMount() {
-        console.log("LOAD THE TASKS NOW!!!")
+        console.log("save again here?");
+        localStorage.setItem("tasks", JSON.stringify(this.state.currTasks));
     }
-
-    componentWillUnmount() {
-        console.log("SAVE THE TASKS NOW!!!");
-    }
-
+    
     populateTasks() {
         const delTask = this.deleteTask;
         return (
-        this.props.UserList.map(function(task) {
+        this.state.currTasks.map(function(task) {
             return (
                 <Task key={task.id} id={task.id} task={task.task} category={task.Category} date={task.Date} delTask={delTask}
-                 />
+                />
             );
         })
         );
     }
     
+
+    /** Handles task deletion on button click */
     deleteTask = (taskID) => {
         let tasks = this.state.currTasks;
-        console.log(tasks);
         for (let i = 0; i < tasks.length; i++) {
             if (taskID == tasks[i]["id"]) {
                 console.log(tasks[i]);
                 tasks.splice(i, 1);
             }
         }
-
-        console.log(tasks)
         this.setState({
             currTasks: tasks
         })
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
     }
     
     render() {

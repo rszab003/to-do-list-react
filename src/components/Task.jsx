@@ -12,8 +12,11 @@ function Task(props) {
                 <td>{props.category}</td>
                 <td>{props.date}</td>
                 <td>
-                    <button onClick={()=>navigate(`/edittask:${props.id}`)}>EDIT</button>
-                    <button onClick={()=>props.delTask(props.id)}>DELETE</button>
+                    <button 
+                    onClick={()=>navigate(`/edittask:${props.id}`)}
+                    id="edit-btn"
+                    >Szerkesztés</button>
+                    <button onClick={()=>props.delTask(props.id)} id="delete-btn">Törlés</button>
                 </td>
             </tr>
     );
