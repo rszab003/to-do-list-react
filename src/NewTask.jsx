@@ -23,6 +23,14 @@ class NewTask extends React.Component {
         this.parseInput = this.parseInput.bind(this);
     }
 
+    /**
+     * creates a new task object,
+     * checks if task category is > 50 characters
+     *      (on true, exits function)
+     * saves to state with new task
+     * sends new task list back to App component
+     * 
+     */
     parseInput(event) {
         event.preventDefault();
         /** create new ID for task, then a new task object */
@@ -35,36 +43,26 @@ class NewTask extends React.Component {
         }
 
         /*check if category exceeds 50 chars */
-        if (newTask.Category.length > 50) {
+        if (newTask.Category.length >= 50) {
             // console.log("WE HAVE exceeded 50 chars")
             this.setState({
                 badUsage: true
             });
             return;
         }
-        // console.log(this.state.currTasks);
+        /** Saves a new to state here */
         let t = this.state.currTasks;
         t.push(newTask);
         // this.state.currTasks.push(newTask);
         this.setState({
             currTasks: t
         })  
-        
         //update in parent App component
         this.props.updateTasks(this.state.currTasks);
-
         this.setState( {
             redirect: true
         })
     }
-
-    // updateState(newList) {
-    //     this.setState({
-    //         redirect: true,
-    //         currTasks: newList
-    //     });
-    //     // console.log(newList);
-    // }
     
     render() {
         return (

@@ -2,6 +2,7 @@ import React from "react";
 import Form from "./components/Form";
 import {useParams, Navigate} from "react-router-dom";
 import {useState} from "react";
+import "./styles/EditTask.css";
 
 
 function EditTask(props) {
@@ -11,22 +12,26 @@ function EditTask(props) {
     let [badInput, setBadInput] = useState(false);
     let tasks = props.UserList;
     let taskToEdit = tasks.find(task => task.id == id.substring(1))
+    /** Protects from accessing */
     if (taskToEdit == undefined) {
-        console.log("PROBLEM!!!");
-        console.log(props.UserList);
+        // console.log("PROBLEM!!!");
+        let json = JSON.parse(localStorage.getItem("tasks"));
+        // console.log("DID WE FIND THE LIST?")
+        
+        /**TODO show an error page if the task is not found */
+
+        taskToEdit = json.find(task => task.id == id.substring(1))
+
+        // console.log(taskToEdit);
     }
-    // console.log("TASK TO EDIT")
-    // console.log(taskToEdit);
-    function componentWillUnmount() {
-        console.log("save to file now!");
-        console.log(props.UserList);
-    }
+
+
     function parseInput(event) {
         event.preventDefault();
         taskToEdit["task"] = event.target[0].value;
-        // console.log(taskToEdit["Category"])
         taskToEdit["Category"] = event.target[1].value;
-        if (taskToEdit["Category"].length > 50) {
+        //check if category length is over 50
+        if (taskToEdit["Category"].length >= 50) {
             setBadInput(!badInput);
             return;
         }
@@ -49,9 +54,9 @@ function EditTask(props) {
     
    
     return (
-        <div>
+        <div className="form-container">
             <h2>Szerkesztés: {taskToEdit["task"]}</h2>
-            <Form 
+            <Form
             task={taskToEdit["task"]}
             cat={taskToEdit["Category"]}
             date={taskToEdit["Date"]}

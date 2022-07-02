@@ -4,24 +4,25 @@ import NewTask from "./NewTask";
 import EditTask from "./EditTask"
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-
-// import UserList from "./data/UserList.json";
+/** Naming convention for Task objects
+ * Task {
+*   id,
+*   task,
+*   Category,
+*   Date
+ * }
+ *
+ */
 
 class App extends React.Component {
 
 
   constructor() {
     super();
-    
     this.state = {
       currList: []
     }
-
     this.updateTasks = this.updateTasks.bind(this);
-  }
-
-  buildTasks() {
-    
   }
 
   updateTasks(newList) {
@@ -29,12 +30,8 @@ class App extends React.Component {
         currList: newList
       });
 
-    console.log("NEW LIST!!!");
-    console.log(this.state.currList)
-  }
-
-  componentWillUnmount() {
-    console.warn("LEAVING THE APP!!!");
+    // console.log("NEW LIST!!!");
+    // console.log(this.state.currList)
   }
 
   render() {

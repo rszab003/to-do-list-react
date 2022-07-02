@@ -7,38 +7,37 @@ class Home extends React.Component {
 
     constructor(props) {
         super(props);
-        if (props.UserList.length == 0) {
-            console.log("DO WE HAVE SAVED TASKS?");
-            var savedTasks = JSON.parse(localStorage.getItem("tasks"));
-            if (savedTasks != null) {
-                this.state = {
-                    currTasks: savedTasks
-                };
-            }
-            else {
-                this.state = {
-                    currTasks: props.UserList
-                }
-            }
-            // console.log(this.state.currTasks);
+        /** Check for saved tasks in local storage and add them to state */
+        var savedTasks = JSON.parse(localStorage.getItem("tasks"));
+        if (props.UserList.length == 0 && savedTasks != null) {
+            this.state = {
+                currTasks: savedTasks
+            };
         }
         else {
             this.state = {
                 currTasks: props.UserList
             };
-            // console.log("*********")
-            // console.log(this.state.currTasks);
         }
+
         this.populateTasks = this.populateTasks.bind(this);
         this.deleteTask = this.deleteTask.bind(this)
         this.props.updateTasks(this.state.currTasks);
     }
 
+    /** React lifecycle method
+     * when navigating back to index, this method is always called.
+     * we save new and edited tasks to local storage here
+     */
     componentDidMount() {
-        console.log("save again here?");
         localStorage.setItem("tasks", JSON.stringify(this.state.currTasks));
     }
     
+    /**
+     * 
+     * @returns Array<Task> 
+     * creates an array of tasks out of the "currTasks" Object array
+     */
     populateTasks() {
         const delTask = this.deleteTask;
         return (
@@ -64,17 +63,17 @@ class Home extends React.Component {
         this.setState({
             currTasks: tasks
         })
-
+        /** update local storage upon task deletion */
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
     
     render() {
         return (
-            <div>
+            <div id="home-container">
                 <h1 id="header-home">TO DO</h1>
 
                 <table id="table">
-                    <thead id="table-head" bgcolor="#3aa554">
+                    <thead id="table-head" bgcolor="#1B512D">
                     <tr>
                         <th id="h-task">Leírás</th>
                         <th id="h-cat">Kategória</th>
